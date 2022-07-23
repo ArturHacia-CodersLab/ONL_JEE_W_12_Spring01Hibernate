@@ -30,6 +30,12 @@ public class PublisherController {
         return publisher.toString();
     }
 
+    @RequestMapping("/all")
+    @ResponseBody
+    public String findAll() {
+        return publisherService.findAll().toString();
+    }
+
     @RequestMapping("/update/{id}/{name}")
     @ResponseBody
     public String updatePublisher(@PathVariable long id, @PathVariable String name) {

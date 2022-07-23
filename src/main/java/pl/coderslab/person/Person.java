@@ -20,5 +20,5 @@ public class Person {
     private String password;
     private String email;
     @OneToOne(cascade = CascadeType.ALL)
-    private pl.coderslab.person.entity.PersonDetails personDetails;
+    private PersonDetails personDetails;
 }

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.person.entity.PersonDetails;
 import pl.coderslab.person.service.PersonService;
 
 @Controller
@@ -14,25 +13,27 @@ public class PersonController {
     private final PersonService personService;
 
     @GetMapping("/add")
-    public String form(Model model) {
-        Person person = new Person();
-        model.addAttribute("person", person);
-        return "person/form";
+    public String add(Model model) {
+        model.addAttribute("person", new Person());
+        return "person/add";
     }
+
+//    @PostMapping("/add")
+//    @ResponseBody
+//    public String save(@RequestParam String login, @RequestParam String password, @RequestParam String email) {
+//        Person person = new Person();
+//        person.setLogin(login);
+//        person.setPassword(password);
+//        person.setEmail(email);
+//        personService.savePerson(person);
+//        return "Osoba zapisana";
+//    }
 
     @PostMapping("/add")
     @ResponseBody
-    public String hello(Person person) {
-        PersonDetails personDetails = new PersonDetails();
-        personDetails.setFirstName("Artur");
-        personDetails.setLastName("Hacia");
-        personDetails.setStreetNumber("54");
-        personDetails.setStreet("Prosta");
-        personDetails.setCity("Warszawa");
-
-        person.setPersonDetails(personDetails);
+    public String save(Person person) {
         personService.savePerson(person);
-        return "Id dodanej osoby to: " + person.getId();
+        return "Osoba zapisana";
     }
 
     @RequestMapping("/get/{id}")

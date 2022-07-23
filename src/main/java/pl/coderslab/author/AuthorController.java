@@ -29,6 +29,12 @@ public class AuthorController {
         return author.toString();
     }
 
+    @RequestMapping("/all")
+    @ResponseBody
+    public String findAll() {
+        return authorService.findAll().toString();
+    }
+
     @RequestMapping("/update/{id}/{lastName}")
     @ResponseBody
     public String updateAuthor(@PathVariable long id, @PathVariable String lastName) {

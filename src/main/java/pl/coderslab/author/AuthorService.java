@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -13,6 +14,10 @@ public class AuthorService {
 
     public Author findById(long id) {
         return authorDao.findById(id);
+    }
+
+    public List<Author> findAll() {
+        return authorDao.findAll();
     }
 
     public void saveAuthor(Author author) {

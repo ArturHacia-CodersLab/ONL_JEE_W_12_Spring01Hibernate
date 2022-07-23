@@ -1,4 +1,4 @@
-package pl.coderslab.person.entity;
+package pl.coderslab.person;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
